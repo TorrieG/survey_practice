@@ -1,7 +1,8 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Survey {
+public class SurveyGUI {
     public static void main(String[] args) {
 
         /**
@@ -22,22 +23,23 @@ public class Survey {
         int youngest = Integer.MAX_VALUE, eldest = 0;
 
         do{
-            System.out.println(SurveyQuestions.askToJoin);
-            String join = inputReader.next();
+            String join = JOptionPane.showInputDialog(SurveyQuestions.askToJoin);
 
             if(join.toUpperCase().startsWith("Y")){
 
                 Participant.addParticipants();
 
                 //Ask your questions to get name, age and gender
-                System.out.println(SurveyQuestions.askName);
-                String name = inputReader.next();
+                String name = JOptionPane.showInputDialog(SurveyQuestions.askName);
 
-                System.out.println(SurveyQuestions.askAge);
-                int age = inputReader.nextInt();
+                String ageQuestion = JOptionPane.showInputDialog(SurveyQuestions.askAge);
+                //System.out.println(SurveyQuestions.askAge);
+                //int age = inputReader.nextInt();
+                int age = Integer.parseInt(ageQuestion);
 
-                System.out.println(SurveyQuestions.askGender);
-                String gender = inputReader.next();
+
+                String gender = JOptionPane.showInputDialog(SurveyQuestions.askGender);
+                //String gender = inputReader.next();
 
                 Participant participant = new Participant(name, age, gender);
                 participants.add(participant);
@@ -48,14 +50,16 @@ public class Survey {
         }while(Participant.totalNumberOfParticipants < 3);
 
         for (Participant participant : participants) {
-            System.out.println(participants);
+
             if (participant.age >eldest) eldest = participant.age;
             if (participant.age < youngest) youngest = participant.age;
         }
-        System.out.println("The total number of male participants is = "+Participant.totalNumberOfMaleParticipants);
-        System.out.println("The total number of female participants is = "+Participant.totalNumberOfFemaleParticipants);
-        System.out.println("The age of the youngest person is = "+ youngest);
-        System.out.println("The age of the eldest person is = "+eldest);
+        JOptionPane.showMessageDialog(null,participants);
+        JOptionPane.showMessageDialog(null,"The total number of male participants is = "+Participant.totalNumberOfMaleParticipants);
+        JOptionPane.showMessageDialog(null,"The total number of female participants is = "+Participant.totalNumberOfFemaleParticipants);
+        JOptionPane.showMessageDialog(null,"The age of the youngest person is = "+ youngest);
+        JOptionPane.showMessageDialog(null,"The age of the eldest person is = "+eldest);
+        JOptionPane.showMessageDialog(null, "Thank you for participating. \nYou are AWESOME!!!");
 
 
 
