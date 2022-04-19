@@ -18,7 +18,7 @@ public class SurveyGUI {
         -Print the age of the eldest person
          */
         //Global variables or objects needed
-        Scanner inputReader = new Scanner(System.in);
+
         ArrayList<Participant> participants = new ArrayList<>();
         int youngest = Integer.MAX_VALUE, eldest = 0;
 
